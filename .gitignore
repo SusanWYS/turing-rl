@@ -1,0 +1,105 @@
+*.pkl
+**/__pycache__/
+.env
+.venv/
+
+# Data and results (large, regenerate per cluster)
+data/*
+!data/README.md
+# Track data/ source + docs (payloads stay ignored via the dir rules below)
+!data/*.md
+!data/*.py
+!data/sft/
+!data/sft/**
+!data/ood/
+data/ood/*
+!data/ood/chatbot_arena_ood_test50/
+data/ood/chatbot_arena_ood_test50/*
+!data/ood/chatbot_arena_ood_test50/test.parquet
+!data/ood/chatbot_arena_ood_test50/test.parquet.metadata.json
+!data/ood/chatbot_arena_ood_test50/personas/
+!data/ood/chatbot_arena_ood_test50/personas/**
+!data/ood/humanual_opinion_test50/
+data/ood/humanual_opinion_test50/*
+!data/ood/humanual_opinion_test50/test.parquet
+!data/ood/humanual_opinion_test50/test.parquet.metadata.json
+!data/ood/humanual_opinion_test50/personas/
+!data/ood/humanual_opinion_test50/personas/**
+!data/convokit/
+data/convokit/*
+!data/convokit/*.py
+!data/convokit/*.json
+!data/convokit/q35_convokit_raw_persona_s42/
+data/convokit/q35_convokit_raw_persona_s42/*
+!data/convokit/q35_convokit_raw_persona_s42/train.parquet
+!data/convokit/q35_convokit_raw_persona_s42/val.parquet
+!data/convokit/q35_convokit_raw_persona_s42/test.parquet
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/
+data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/*
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/
+data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/*
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/train.parquet
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/val.parquet
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/test.parquet
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/test_tifu25_worldnews25_seed20260520.parquet
+!data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/prompt_mode.txt
+!data/prism/
+data/prism/*
+!data/prism/*.py
+!data/prism/*.json
+!data/prism/submit_prepare_prism_data.sh
+!data/prism/submit_regenerate_prism_personas.sh
+!data/prism/personas/
+data/prism/personas/*
+!data/prism/personas/prism_alignment_min6_heldout40_gpt54nano_20260424_historywords8192.jsonl
+!data/prism/personas/prism_alignment_min6_heldout40_latest.jsonl
+!data/prism/prism_alignment_filtered_test.parquet
+!data/prism/prism_alignment_filtered_test.parquet.metadata.json
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/
+data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/*
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/train.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/val.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/test.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/prompt_mode.txt
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42/train.parquet.metadata.json
+!data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/
+data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/*
+!data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/train.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/val.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/test.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/prompt_mode.txt
+!data/prism/mixed_allu_r4_mixed_prism_alignment_persona_s42/train.parquet.metadata.json
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/
+data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/*
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/grpo/
+data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/grpo/*
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/grpo/train.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/grpo/val.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/grpo/test.parquet
+!data/prism/mixed_allu_r4_mixed_prism_alignment_history_persona_s42_sft40_grpo60_test10/grpo/prompt_mode.txt
+results/
+logs/
+wandb/
+
+# Claude Code local state
+.claude/
+
+# SLURM logs
+slurm-*.out
+
+# Papers / docs
+*.pdf
+
+# Analysis text notes
+analysis/methods_section.txt
+analysis/turing_thinking_comparison.txt
+
+# Old script backups
+past/
+
+# Scratch files
+bash_scripts/Untitled
+
+# Python bytecode (robust against data/ un-ignores)
+*.pyc
+*.pyo

@@ -1,0 +1,61 @@
+{
+  "dataset": "convokit",
+  "output_dir": "data/convokit/<build_name>",
+  "seed": 42,
+  "history": {
+    "min_count": 2,
+    "max_count": 6,
+    "seed": 42
+  },
+  "persona": {
+    "enabled": true,
+    "model": "gpt-5.4-nano",
+    "temperature": 0.2,
+    "max_completion_tokens": 2048,
+    "max_workers": 24,
+    "attempts": 3,
+    "output_path": "data/convokit/<persona_map>.json"
+  },
+  "prompt": {
+    "tokenizer": "Qwen/Qwen3-8B",
+    "prompt_mode": "reasoning",
+    "conditioning_mode": "history_persona",
+    "data_source": "reddit_user_sim_mixed"
+  },
+  "convokit": {
+    "train_subreddits": [
+      "AmItheAsshole",
+      "AskMen",
+      "AskWomen",
+      "business",
+      "changemyview",
+      "Frugal",
+      "news",
+      "relationship_advice",
+      "tifu",
+      "worldnews"
+    ],
+    "test_subreddits": [
+      "Economics",
+      "TrueReddit",
+      "relationships",
+      "MaliciousCompliance"
+    ],
+    "min_conversations": 8,
+    "val_frac": 0.3,
+    "thread_comment_retention": "last_target_ancestor_chain",
+    "corpus_zip_dir": "data/convokit/subreddit_corpora",
+    "max_train_users": null,
+    "max_test_users": null,
+    "allow_user_overlap_between_splits": false
+  },
+  "split_data": {
+    "script": "data/convokit/split_data.py",
+    "input_dir": "data/convokit/<build_name>",
+    "output_dir": "data/convokit/<split_build_name>",
+    "heldout_subreddits": ["r/tifu", "r/worldnews"],
+    "grpo_frac": 0.6,
+    "grpo_val_frac": 0.3,
+    "seed": 42
+  }
+}

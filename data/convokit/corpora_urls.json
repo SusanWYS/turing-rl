@@ -1,0 +1,58 @@
+{
+  "AmItheAsshole": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/AmISexyMale~-~AmericanPolitics/AmItheAsshole.corpus.zip",
+    "size_bytes": 56530282
+  },
+  "AskMen": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/AskDoctor~-~AskMen/AskMen.corpus.zip",
+    "size_bytes": 1386532713
+  },
+  "AskWomen": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/AskReddit02~-~AskWomen/AskWomen.corpus.zip",
+    "size_bytes": 1320204760
+  },
+  "business": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/busangod~-~business/business.corpus.zip",
+    "size_bytes": 327980891
+  },
+  "changemyview": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/cats3~-~changemyview/changemyview.corpus.zip",
+    "size_bytes": 1271397372
+  },
+  "Frugal": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/FreeStuffOnline~-~FrugalMaleFashionCDN/Frugal.corpus.zip",
+    "size_bytes": 454032303
+  },
+  "news": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/newreddits_nsfw~-~news/news.corpus.zip",
+    "size_bytes": 5368407159
+  },
+  "relationship_advice": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/redducate~-~relationship_advice/relationship_advice.corpus.zip",
+    "size_bytes": 999506631
+  },
+  "tifu": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/thisishumane~-~timelapse/tifu.corpus.zip",
+    "size_bytes": 655429559
+  },
+  "worldnews": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/worldIBS~-~worldnews/worldnews.corpus.zip",
+    "size_bytes": 6869816132
+  },
+  "Economics": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/EcoKindDesign~-~ElderScrolls/Economics.corpus.zip",
+    "size_bytes": 436540281
+  },
+  "TrueReddit": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/TrueOklahoma~-~TumblrInAction/TrueReddit.corpus.zip",
+    "size_bytes": 372239123
+  },
+  "relationships": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/relationship_comments~-~relationships/relationships.corpus.zip",
+    "size_bytes": 3749013775
+  },
+  "MaliciousCompliance": {
+    "url": "https://zissou.infosci.cornell.edu/convokit/datasets/subreddit-corpus/corpus-zipped/MakeupAddictionAsia~-~MapleStoryM/MaliciousCompliance.corpus.zip",
+    "size_bytes": 64437133
+  }
+}

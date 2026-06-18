@@ -1,0 +1,17 @@
+# Qwen3-8B LoRA SFT config
+lora_r: 16
+lora_alpha: 32
+lora_dropout: 0.05
+use_qlora: true
+
+num_epochs: 3
+batch_size: 1
+gradient_accumulation_steps: 16
+learning_rate: 2e-4
+lr_scheduler: cosine
+warmup_ratio: 0.05
+weight_decay: 0.01
+
+gradient_checkpointing: true
+logging_steps: 10
+report_to: none

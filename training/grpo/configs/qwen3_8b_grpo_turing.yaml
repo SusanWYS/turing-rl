@@ -1,0 +1,20 @@
+# veRL 0.7.1 GRPO config for Qwen3-8B Turing reward training.
+
+defaults:
+  - qwen3_8b_grpo
+  - _self_
+
+actor_rollout_ref:
+  actor:
+    use_kl_loss: true
+    kl_loss_coef: 0.001
+    optim:
+      lr: 1.0e-5
+
+critic:
+  optim:
+    lr: 1.0e-5
+
+trainer:
+  default_local_dir: results/grpo/checkpoints_turing
+  experiment_name: qwen3-8b-grpo-turing

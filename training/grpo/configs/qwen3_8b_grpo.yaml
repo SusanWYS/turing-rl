@@ -1,0 +1,120 @@
+# veRL 0.7.1 shared GRPO config for Qwen3-8B retained reward paths.
+# Composes on top of veRL's ppo_trainer defaults via Hydra.
+# Path-specific configs should only override reward family, run naming, LR, and KL settings.
+
+defaults:
+  - ppo_trainer
+  - _self_
+
+# Model
+actor_rollout_ref:
+  model:
+    path: Qwen/Qwen3-8B
+    # Keep rollout/model forward on the packed path.
+    use_remove_padding: true
+    lora_rank: 64
+    lora_alpha: 32
+    lora_adapter_path: null
+    target_modules: all-linear
+    override_config:
+      attn_implementation: sdpa
+  actor:
+    ppo_epochs: 1
+    ppo_mini_batch_size: 64
+    ppo_micro_batch_size_per_gpu: 4
+    # Older veRL FSDP PPO paths can hit bad flattened-parameter views under torch.compile.
+    use_torch_compile: false
+    # Keep actor compute_log_prob on the packed path as well.
+    use_remove_padding: true
+    use_kl_loss: true
+    kl_loss_coef: 0.001
+    loss_agg_mode: token-mean
+    clip_ratio: 0.2
+    optim:
+      lr: 1.0e-5
+    fsdp_config:
+      param_offload: false
+      model_dtype: bf16
+      # LoRA + older veRL FSDP PPO can hit bad flattened-parameter views unless orig params are kept.
+      use_orig_params: true
+  rollout:
+    name: vllm
+    log_prob_micro_batch_size_per_gpu: 8
+    n: 4
+    temperature: 0.6
+    top_p: 1.0
+    top_k: -1
+    do_sample: true
+    tensor_model_parallel_size: 8
+    gpu_memory_utilization: 0.3
+    free_cache_engine: true
+    load_format: safetensors
+    enforce_eager: true
+    max_model_len: 13524
+    max_num_batched_tokens: 13524
+    max_num_seqs: 64
+    enable_chunked_prefill: false
+    enable_prefix_caching: false
+    response_length: 1024
+    layered_summon: true
+    agent:
+      num_workers: 8
+  ref:
+    log_prob_micro_batch_size_per_gpu: 8
+    fsdp_config:
+      param_offload: false
+      use_orig_params: true
+
+# Data
+data:
+  train_files: data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/train.parquet
+  val_files: data/convokit/q35_convokit_raw_history_persona_s42_sft40_grpo60_tifu_worldnews_test102/grpo/val.parquet
+  max_prompt_length: 12500
+  max_response_length: 1024
+  truncation: left
+  filter_overlong_prompts: true
+  shuffle: true
+  seed: 42
+  train_batch_size: 64
+  dataloader_num_workers: 0
+  apply_chat_template_kwargs:
+    enable_thinking: false
+
+# Custom reward function
+custom_reward_function:
+  path: training/grpo/reward.py
+  name: compute_score
+
+# Algorithm
+algorithm:
+  adv_estimator: grpo
+
+critic:
+  enable: false
+  model:
+    use_remove_padding: true
+  optim:
+    lr: 1.0e-5
+
+reward:
+  num_workers: 1
+
+# Trainer
+trainer:
+  val_before_train: false
+  n_gpus_per_node: 8
+  nnodes: 1
+  save_freq: 50
+  default_local_dir: results/grpo/checkpoints
+  resume_mode: auto
+  total_epochs: 3
+  project_name: grpo-user-sim
+  experiment_name: qwen3-8b-grpo
+  logger:
+    - wandb
+
+# Ray
+ray_kwargs:
+  ray_init:
+    # Keep local Ray startup aligned with the CPUs SLURM actually granted.
+    num_cpus: ${oc.decode:${oc.env:PERSONA_RAY_NUM_CPUS,null}}

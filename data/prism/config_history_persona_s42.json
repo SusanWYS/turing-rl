@@ -1,0 +1,47 @@
+{
+  "dataset": "prism",
+  "output_dir": "data/prism/<build_name>",
+  "seed": 42,
+  "history": {
+    "min_count": 2,
+    "max_count": 4,
+    "seed": 42
+  },
+  "persona": {
+    "enabled": true,
+    "model": "gpt-5.4-nano",
+    "temperature": 0.2,
+    "max_completion_tokens": 2048,
+    "max_workers": 24,
+    "attempts": 3,
+    "output_path": "data/prism/<persona_map>.json"
+  },
+  "prompt": {
+    "tokenizer": "Qwen/Qwen3-8B",
+    "prompt_mode": "reasoning",
+    "conditioning_mode": "history_persona",
+    "data_source": "prism_alignment_user_sim"
+  },
+  "prism": {
+    "dataset_name": "HannahRoseKirk/prism-alignment",
+    "config_name": "conversations",
+    "split": "train",
+    "min_conversations": 6,
+    "heldout_user_frac": 0.4,
+    "eval_thread_frac": 0.3,
+    "prediction_start_turn": 1,
+    "shuffle_rows": true,
+    "shuffle_seed": 42,
+    "max_train_users": null,
+    "train_user_offset": 0
+  },
+  "split_data": {
+    "script": "data/prism/split_data.py",
+    "input_dir": "data/prism/<build_name>",
+    "output_dir": "data/prism/<split_build_name>",
+    "heldout_user_frac": 0.1,
+    "grpo_frac": 0.6,
+    "grpo_val_frac": 0.1,
+    "seed": 42
+  }
+}
